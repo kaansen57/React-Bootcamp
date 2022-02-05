@@ -74,3 +74,6 @@ const getUsers = () => {
 Promise.all([getUsers(), getPost(1)])
   .then(console.log)
   .catch(console.log);
+
+
+  
