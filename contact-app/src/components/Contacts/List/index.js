@@ -1,20 +1,30 @@
-import { useState } from "react";
-import Form from '../Form'
+import { useState, useEffect } from "react";
+import Form from "../Form";
 const Index = ({ contactList }) => {
+  const [filterText, setFilterText] = useState("");
 
-  const filterList = (e) => {
-  
-  }
+  const filtered = contactList.filter((item) => {
+    return Object.keys(item).some((key) => {
+      return item[key].toString().toLowerCase().includes(filterText);
+    });
+  });
 
   return (
     <div>
       <label htmlFor="filter">Filter</label>
       <div>
-        <input id="filter" type="text" name="filter" onChange={filterList} placeholder="filter" />
+        <input
+          id="filter"
+          type="text"
+          name="filter"
+          value={filterText}
+          onChange={(e) => setFilterText(e.target.value)}
+          placeholder="filter"
+        />
       </div>
       <ul>
-        {contactList &&
-          contactList.map((person, i) => {
+        {filtered &&
+          filtered.map((person, i) => {
             return (
               <li key={i}>
                 {" "}
