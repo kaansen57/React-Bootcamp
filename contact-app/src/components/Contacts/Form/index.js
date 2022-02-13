@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import '../Form/form.css'
 const Index = ({ addContact, contact }) => {
   const initialFormValue = { firstname: "", phone: "" };
   const [form, setForm] = useState(initialFormValue);
@@ -37,7 +37,9 @@ const Index = ({ addContact, contact }) => {
           value={form.phone}
         />
       </div>
-      <button> Add </button>
+      <button className="btn">
+        <b>Add Record </b>
+      </button>
     </form>
   );
 };
